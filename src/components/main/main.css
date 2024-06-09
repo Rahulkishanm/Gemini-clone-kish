@@ -33,7 +33,7 @@
 }
 .main .cards{
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
     gap: 15px;
 }
 .main .card{
@@ -149,8 +149,48 @@ animation: loader 4s infinite linear;
     }
 }
 
-.result-data p{
-    font-size: 17px;
-    font-weight: 300px;
-    line-height: 1.8;
+.result-data {
+    display: flex;
+    align-items: start; /* Aligns items to the top */
+    margin-bottom: 20px; /* Adds space between entries */
+  }
+  
+  .chatbot-logo {
+    width: 50px; /* Fixed width for all images */
+    height: 50px; /* Fixed height for all images */
+    margin-right: 15px; /* Space between image and text */
+  }
+  
+  .result-data p {
+    flex: 1; /* Ensures the paragraph takes the remaining space */
+    margin: 0; /* Removes default margin */
+    font-size: 17px; /* Sets the font size */
+    font-weight: 300; /* Sets the font weight - should be a number without 'px' */
+    line-height: 1.8; /* Sets the line height for better readability */
+  }
+  
+.search-box-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Spacing between elements */
+}
+
+.clear-chat {
+    background-color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #585858;
+    transition: background-color 0.3s;
+    cursor: pointer; 
+    margin-bottom: 10px;
+}
+
+.clear-chat:hover {
+    background-color: #e2e6ec; /* Lighter shade on hover for feedback */
+    cursor: pointer; 
+}
+.disbled-send-button:hover {
+    cursor: not-allowed;
 }

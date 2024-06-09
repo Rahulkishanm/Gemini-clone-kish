@@ -6,6 +6,25 @@ const Sidebar = () => {
 	const [extended, setExtended] = useState(false);
 	const { onSent, prevPrompts, setRecentPrompt, newChat } = useContext(Context);
 
+	async function getDiscussionsWithFirstMessage(userId) {
+		const discussionsRef = collection(db, `users/${userId}/discussions`);
+		const snapshot = await getDocs(discussionsRef);
+		const discussions = [];
+	
+		for (const doc of snapshot.docs) {
+			const messagesRef = collection(db, `users/${userId}/discussions/${doc.id}/messages`);
+			const messagesQuery = query(messagesRef, orderBy("createdAt", "asc"), limit(1));
+			const messageSnapshot = await getDocs(messagesQuery);
+	
+			if (!messageSnapshot.empty) {
+				const firstMessage = messageSnapshot.docs[0].data().prompt;
+				discussions.push({ discussionId: doc.id, firstMessage });
+			}
+		}
+	
+		return discussions;
+	}
+
 	const loadPreviousPrompt = async (prompt) => {
 		setRecentPrompt(prompt);
 		await onSent(prompt);
