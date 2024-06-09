@@ -106,7 +106,7 @@ const Main = () => {
 		              setStatus('preparing your answer...');
 		              break;
 		            case 'ERRORED':
-		              setStatus('Oh no! Something went wrong. Please try again.');
+		              setResponses(responses => [...responses, { text: "Oh no! Something went wrong. Please try again.", type: 'RESPONSE' }]);
 		              unsubscribe();
 		              break;
 		            default:
@@ -287,6 +287,7 @@ async function createNewPageAndStartConvo(navigate, user, setPrompt, setResponse
 						setStatus('preparing your answer...');
 						break;
 					case 'ERRORED':
+						setResponses(responses => [...responses, { text: 'Oh no! Something went wrong. Please try again.', type: 'RESPONSE' }]);
 						setStatus('Oh no! Something went wrong. Please try again.');
 						prompt.status = PROMPT_QUEUE_STATUS_FRM_EXTN.FAILURE;
 						unsubscribe();

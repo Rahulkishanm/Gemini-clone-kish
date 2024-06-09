@@ -1,7 +1,5 @@
 import { createContext, useState,useEffect } from "react";
 
-import { db } from '../firebase-config'
-import runChat from "../config/Gemini";
 
 export const Context = createContext();
 
