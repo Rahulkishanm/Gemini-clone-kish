@@ -27,7 +27,7 @@ const Main = () => {
 
 
 	async function sendPrompt(event) {
-		const newDiscussionId = Date.now().toString(); // Simple example for generating IDs
+		const newDiscussionId = Date.now().toString(); 
 		navigate(`/discussions/${newDiscussionId}`);
 		setPrompt(event.data);
 		handlePromptSubmit({preventDefault:()=>{},discussionId:newDiscussionId,prompt:event.data})
